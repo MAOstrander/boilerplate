@@ -6,17 +6,37 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Learning Angular</title>
-	<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <!-- <link rel="stylesheet" type="text/css" href="styles/main.css"> -->
 </head>
 
-<body>
+<body ng-app="TodoApp">
 
+  <section ng-controller="TodoCtrl">
+  	<h1>{{title}}</h1>
 
+		<input type="text" ng-model="searchText" />
 
-<!-- Javascript land -->
-<script src="lib/bower_components/angular/angular.min.js"></script>
+		<div>
+		  <ul ng-repeat="todo in todos | filter: searchText">
+		    <li>{{ todo.name }} <button ng-click="killTodo(todo)">Finish</button></li>
+		  </ul>
+		</div>
+
+		<div>
+		  Grouped tasks:
+		  <select
+		      ng-model="theTodo"
+		      ng-options="value.name group by value.complete for value in todos">
+		  </select>
+		</div>
+
+		<h3>{{theTodo.name}}</h3>
+
+  </section>
+
+	<script src="lib/bower_components/angular/angular.min.js"></script>
+	<script src="javascripts/app/Todo.js"></script>
 
 </body>
 </html>
