@@ -1,0 +1,138 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- // <script src="https://cdn.firebase.com/js/client/2.3.1/firebase.js"></script> -->
+    <title>Music History Assignment Version 7</title>
+
+    <link rel="stylesheet" type="text/css" href="lib/bower_components/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+
+<body>
+    
+    <!-- Navigation Header at Top-->
+    <nav class="navbar navbar-default navbar-fixed-top" id="navi">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Profile</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="#" id="list">List Music</a></li>
+            <li><a href="#" id="add">Add Music</a></li>
+            <li><a href="#" id="more">Find More Music</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Playlists<span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li>playlist1</li>
+                <li>playlist2</li>
+                <li><button id="playlist-button" class="btn btn-default">Create New Playlist</button></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">  <!-- HERE IS MY ROW STARTER -->
+            <div id="controls" class="col-sm-2 list-songs">
+                <div>
+                    <button id="play" type="button" class="btn btn-default control-button">
+                        <span class="glyphicon glyphicon-play" aria-hidden="true"></span>
+                    </button>
+                    <button id="stop" type="button" class="btn btn-default control-button">
+                        <span class="glyphicon glyphicon-stop" aria-hidden="true"></span>
+                    </button>
+                    <button id="skip" type="button" class="btn btn-default control-button">
+                        <span class="glyphicon glyphicon-forward" aria-hidden="true"></span>
+                    </button>
+                </div>
+
+                <h4>Filter Songs</h4>
+
+                <label for="artist">Artist:
+                  <select id="artist" name="artist">
+                    <!-- <option class='filter-artist'></option> -->
+                  </select>
+                </label>
+
+                <label for="album">Album:
+                  <select id="album" name="album">
+                    <!-- <option class='filter-album'></option> -->
+                  </select>
+                </label>
+
+                <h5>Genre:</h5>
+                <div id="genre">
+                </div>
+                
+                <input type="submit" value="Filter Genre" class="btn btn-default"></input>
+            </div>
+
+            <!-- Song Input for Add Music (WILL HIDE OR DISPLAY BY BUTTONPRESS)-->
+            <div id="song-input" class="display-hide col-sm-8 col-sm-offset-2">
+              <label>
+                <input type="text" name="song-add"> Name of Song
+              </label>
+              <label>
+                <input type="text" name="artist-add"> Artist
+              </label>
+              <label>
+                <input type="text" name="album-add"> Album
+              </label>
+              <label>
+                <input type="text" name="genre-add"> Genre
+              </label>
+              <label>
+                <input type="text" name="image-add"> Album Art
+              </label>
+              <button id="button-add" class="btn btn-default">Add</button>  
+            </div>
+            <!-- Body into which the JavaScript inserts songs-->
+            <div id="song-info" class="col-sm-5 list-songs">
+            </div>
+
+            <!-- Maybe put album art here -->
+            <div id="maybe-art" class="col-sm-5 list-songs">
+                <img src="images/yourArtHere.jpg">
+            </div>
+
+            <!-- Delete Modal -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                  </div>
+                  <div class="modal-body">
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button id="modalAdd" type="button" class="btn btn-default" data-dismiss="modal">Add another</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div> <!-- HERE IS MY ROW ENDER -->
+    </div> <!-- container fluid div -->
+    <script data-main="javascripts/go" src="lib/bower_components/requirejs/require.js"></script>
+</body>
+</html>
